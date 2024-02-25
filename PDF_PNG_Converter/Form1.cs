@@ -12,10 +12,11 @@ namespace PDF_PNG_Converter
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button_File_Select_Click(object sender, EventArgs e)
+        }            
+        
+        private void îòêðûòüToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             var fileContent = string.Empty;
             var file_PDF_Path = string.Empty;
 
@@ -25,40 +26,44 @@ namespace PDF_PNG_Converter
                 openFileDialog.Filter = "txt files (*.pdf)|*.pdf|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
-                openFileDialog.Multiselect= true;
+                openFileDialog.Multiselect = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
                     var files_PDF_Paths = openFileDialog.FileNames;
-                    
+                    //Clean textbox
+                    textBoxLogs.Text = String.Empty;
                     //try
-                    {
-                        for (int i = 0; i < files_PDF_Paths.Length; i++)
-                            
+                    
+                    for (int i = 0; i < files_PDF_Paths.Length; i++)
+                        {
+                           try
                         {
                             var document = PdfiumViewer.PdfDocument.Load(files_PDF_Paths[i]);
-                            
-                                var image = document.Render(0, 300, 300, PdfRenderFlags.CorrectFromDpi);
-                                var file_PNG_Path = new FileInfo(files_PDF_Paths[i]).Directory;
-                                string stringToSavePNG = String.Format(file_PNG_Path + "\\" + "scr{0}.jpg", i);
-                                //MessageBox.Show(stringToSavePNG);
-                                image.Save(String.Format(stringToSavePNG), ImageFormat.Jpeg);
-                            
-                        }
-                        
-                        //catch (Exception ex)
-                        {
-                           // MessageBox.Show("Error");
-                        }
-                    }
 
+                            var image = document.Render(0, 300, 300, PdfRenderFlags.CorrectFromDpi);
+                            var file_PNG_Path = new FileInfo(files_PDF_Paths[i]).Directory;
+                            string stringToSavePNG = String.Format(file_PNG_Path + "\\" + "scr{0}.jpg", i);
+                            textBoxLogs.Text += "Create file " + stringToSavePNG + Environment.NewLine;
+                            //MessageBox.Show(stringToSavePNG);
+                            image.Save(String.Format(stringToSavePNG), ImageFormat.Jpeg);
+
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+
+                    }
+                 
                 }
             }
 
-            
-
-
         }
+
     }
+
 }

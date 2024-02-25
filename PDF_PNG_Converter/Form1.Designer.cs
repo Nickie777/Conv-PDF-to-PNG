@@ -28,22 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button_File_Select = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.textBoxLogs = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            this.panelMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // button_File_Select
-            // 
-            this.button_File_Select.Location = new System.Drawing.Point(432, 155);
-            this.button_File_Select.Name = "button_File_Select";
-            this.button_File_Select.Size = new System.Drawing.Size(152, 23);
-            this.button_File_Select.TabIndex = 0;
-            this.button_File_Select.Text = "Выбрать файл";
-            this.button_File_Select.UseVisualStyleBackColor = true;
-            this.button_File_Select.Click += new System.EventHandler(this.button_File_Select_Click);
             // 
             // menuStrip1
             // 
@@ -66,31 +58,53 @@
             // открытьToolStripMenuItem
             // 
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.открытьToolStripMenuItem.Text = "Открыть";
+            this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.textBoxLogs);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(0, 24);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(800, 426);
+            this.panelMain.TabIndex = 2;
+            // 
+            // textBoxLogs
+            // 
+            this.textBoxLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLogs.Font = new System.Drawing.Font("Kristen ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxLogs.Location = new System.Drawing.Point(0, 0);
+            this.textBoxLogs.Multiline = true;
+            this.textBoxLogs.Name = "textBoxLogs";
+            this.textBoxLogs.Size = new System.Drawing.Size(800, 426);
+            this.textBoxLogs.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button_File_Select);
+            this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Converter PDF - PNG";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Button button_File_Select;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem файлToolStripMenuItem;
         private ToolStripMenuItem открытьToolStripMenuItem;
+        private Panel panelMain;
+        private TextBox textBoxLogs;
     }
 }
